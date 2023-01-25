@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 
 public class Field {
 
@@ -15,10 +12,6 @@ public class Field {
         button = new JButton();
         button.setFocusable(false);
         button.setBackground(new Color(44,27,1));
-
-
-       // button.addMouseListener((MouseListener) this);
-
 
 
 

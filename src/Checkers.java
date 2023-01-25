@@ -26,7 +26,6 @@ public class Checkers implements MouseListener{
 
                 if (e.getSource() == Board.board[i][j].button) {
                     check(i,j);
-                    //System.out.println(Board.ico_white_queen);
 
                 }
             }
@@ -48,10 +47,8 @@ public class Checkers implements MouseListener{
 
     }
     public  void check(int i, int j){
-            //if(Board.board[i][j]==Board.board[oldI][oldJ]) {
 
         if(fullTurn) {
-            System.out.println(isWasBeaten() + " i " + i + " j " + j + " oldi " + oldI + " ojdj " + oldJ);
             if(Board.board[i][j].figures==null)return;
             if(!isWasBeaten()){
                 oldI = i;
@@ -67,7 +64,6 @@ public class Checkers implements MouseListener{
         if(i==oldI && j == oldJ) {
             fullTurn = true;
             Board.board[oldI][oldJ].button.setBackground(new Color(255, 229, 180));
-            System.out.println("jestem");
         }
         if(!fullTurn) {
             if(Board.board[i][j].figures!=null) return;
@@ -78,11 +74,10 @@ public class Checkers implements MouseListener{
             }
         }
         winningCheck();
-
     }
     private void winningCheck(){
         if(whiteWinningCheck()){
-            Board.textfield.setText("Congratulations!!! White is winning!");
+            Board.textfield.setText("Congratulations!!! White wins!!!");
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
                     Board.board[i][j].button.setBackground(Color.WHITE);
@@ -90,14 +85,13 @@ public class Checkers implements MouseListener{
             }
         }
         if(blackWinningCheck()){
-            Board.textfield.setText("Congratulations!!! Black is winning!");
+            Board.textfield.setText("Congratulations!!! Black wins!!!");
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
                     Board.board[i][j].button.setBackground(Color.BLACK);
                 }
             }
         }
-
 
     }
     private boolean whiteWinningCheck(){

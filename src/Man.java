@@ -5,9 +5,7 @@ public class Man extends Figures {
     this.color = color;
     }
     public void secondStepOfMove(int i, int j){
-        System.out.println("i = " + i + "j = " + j + " oldi = " + Checkers.getOldI() + " getodJ = " + Checkers.getOldJ());
 
-        System.out.println("Maaaaan!  obawiam się mości Panie, że gdzieś wystąpił błąd " + i + " " + j);
         System.out.println(Checkers.isWasBeaten());
         if(
                 Checkers.isPlayerWhiteTurn() && !Checkers.isWasBeaten() &&
@@ -30,7 +28,6 @@ public class Man extends Figures {
                 beat(i, j,1,-1) ;
                 beat(i, j,-1,1);
 
-                //makingKing(i,j);
     }
 
      void makingKing( int i, int j){
@@ -52,12 +49,8 @@ public class Man extends Figures {
             Board.board[i][j].figures =  new King("White");
 
             textfield.setText("Congratulation!!! You have a King!");
-
         }
-
-
     }
-
 
     @Override
     public boolean equals(Object obj) {

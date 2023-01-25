@@ -7,7 +7,6 @@ public abstract class Figures extends Board{
                 this.color = color;
         }
         public Figures() {
-           //     this.color = color;
         }
 
         public void firstStepOfMove(int i, int j) {
@@ -25,13 +24,10 @@ public abstract class Figures extends Board{
                 textfield.setFont(new Font("Times New Roman", Font.BOLD, 45));
 
                 textfield.setText("White points: " + whitePoints + "    Black points: " + blackPoints);
-
-
         }
         public void secondStepOfMove(int i, int j){
 
         }
-//
         public void move(int i, int j){
                 Board.board[i][j].button.setIcon(Board.board[Checkers.getOldI()][Checkers.getOldJ()].button.getIcon()); // nakladam nowa ikone
 
@@ -42,16 +38,10 @@ public abstract class Figures extends Board{
                 Board.board[Checkers.getOldI()][Checkers.getOldJ()].figures=null; // czyszcze poprzednia referencje
 
                 writingCurrentPoints();
-                System.out.println("jestem");
                 Checkers.fullTurn=true;
 
-                //makingKing(i, j);
-
-                //Checkers.winningCheck();
-                // reszta dla opcji przy biciu
                 if(!Checkers.isWasBeaten()) return;
 
-                System.out.println("no bylo bicie");
                 Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].figures=null; // czyszcze referencje zbitego pionka
                 Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].button.setIcon(null);
                 if (possibleBeat(i,j)) {
@@ -64,7 +54,6 @@ public abstract class Figures extends Board{
                         } else if (!Checkers.isPlayerWhiteTurn()) {
                                 Checkers.setPlayerWhiteTurn(false);
                         }
-
                 }
                 else {
                         if (Checkers.isPlayerWhiteTurn()) {
@@ -76,8 +65,6 @@ public abstract class Figures extends Board{
                         }
                         Checkers.setWasBeaten(false);
                 }
-
-
         }
         protected void beat(int i, int j, int x, int y) {
                 if(    !Checkers.isPlayerWhiteTurn() &&
@@ -89,8 +76,6 @@ public abstract class Figures extends Board{
                         Checkers.setBeatenJ(Checkers.getOldJ()+ y);
                         blackPoints++;
                         Checkers.setWasBeaten(true);
-//            Checkers.setPlayerWhiteTurn(true);
-                        System.out.println("bicie");
                         move(i,j);
                 }
                 else if (     Checkers.isPlayerWhiteTurn()  &&
@@ -102,14 +87,11 @@ public abstract class Figures extends Board{
                         Checkers.setBeatenJ(Checkers.getOldJ()+ y);
                         whitePoints++;
                         Checkers.setWasBeaten(true);
-                        System.out.println("bicie");
 
-//            Checkers.setPlayerWhiteTurn(false);
                         move(i,j);
                 }
         }
         private boolean possibleBeat( int newX, int newY) {
-                System.out.println("possibility beat 1");
                 if (Checkers.isPlayerWhiteTurn() && (
                                 possibleBeat(newX, newY, -1, -1, "Black") ||
                                 possibleBeat(newX, newY, +1, +1, "Black") ||
@@ -129,7 +111,6 @@ public abstract class Figures extends Board{
                 else return false;
         }
         private boolean possibleBeat( int newX, int newY,int x, int y, String color){
-                System.out.println("possibility beat 2");
                 boolean tmp = false;
                 try {
                         if ( (Board.board[newX + (2 * x)][newY + (2 * y)].figures==null) && (Board.board[newX + x][newY + y].figures!=null) && (Board.board[newX + x][newY + y].figures.color.equals(color)) ) {
@@ -140,34 +121,9 @@ public abstract class Figures extends Board{
                 catch (ArrayIndexOutOfBoundsException e){
                         tmp=false;
                 }
-                System.out.println("czy possibility jest true    =  " + tmp);
-                System.out.println(" newx " + newX + " newy " + newY + " x " + x + " y " + y );
+
                 return  tmp;
         }
-//        private void makingKing( int i, int j){
-//                if(i==0 && Board.board[i][j].figures.color.equals("Black")){
-//                        System.out.println(                        Board.board[i][j].button.getIcon());
-//                        Board.board[i][j].button.setIcon(null);
-//                        Board.board[i][j].button.setIcon(ico_black_queen);
-//                        System.out.println(                        Board.board[i][j].button.getIcon());
-//                        Board.board[i][j].figures =  new King("Black");
-//
-//                        textfield.setText("Congratulation!!! You have a King!");
-//
-//                }
-//                if(i==7 && Board.board[i][j].figures.color.equals("White")){
-//                        System.out.println(                        Board.board[i][j].button.getIcon());
-//                        Board.board[i][j].button.setIcon(null);
-//                        Board.board[i][j].button.setIcon(ico_white_queen);
-//                        System.out.println(                        Board.board[i][j].button.getIcon());
-//                        Board.board[i][j].figures =  new King("White");
-//
-//                        textfield.setText("Congratulation!!! You have a King!");
-//
-//                }
-//
-//
-//        }
 void makingKing( int i, int j){}
 
 

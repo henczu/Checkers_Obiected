@@ -1,11 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class Board {
-    // do pola dodaje button i przypisuje wartosc i sprawdzam pozniej czy cos tam jest
     Image img_black;
     Icon ico_black;
     Image img_white;
@@ -63,27 +60,19 @@ public class Board {
         frame.add(tittle_panel,BorderLayout.NORTH);
         frame.add(button_panel);
 
-
-
-
-
     }
     public void creating_figures (Checkers checkers){
         for (int i = 0; i < 12; i++) {
-           // Man man = new Man();
 
         }
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                //board[i][j] = new JButton();
                 board[i][j] = new Field();
 
                 button_panel.add( board[i][j].button);
 
-                //( board[i][j].button).setFocusable(false);
                 (board[i][j].button).addMouseListener( checkers);
-                //( board[i][j].button).setBackground(new Color(44,27,1));
             }
         }
         for (int i = 0; i < 8; i++) {
@@ -91,7 +80,6 @@ public class Board {
                 for (int j = 0; j < 8; j += 2) {
 
                     board[i][j].button.setBackground(new Color(255,229,180));
-                  //  Man man = new Man();
 
                 }
             } else {
@@ -111,9 +99,6 @@ public class Board {
                     for (int j = 0; j < 8; j += 2) {
                         board[i][j].button.setIcon(ico_white);
                         board[i][j].figures = new Man("White");
-
-                        //board[i][j] = new Man();
-
 
                     }
                 } else {
@@ -148,21 +133,7 @@ public class Board {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-//        try {
-//            img_black_queen = ImageIO.read(getClass().getResource("black_figure_queen.png"));
-//            ico_black_queen = new ImageIcon(img_black_queen);
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//        try {
-//            img_white_queen = ImageIO.read(getClass().getResource("white_figure_queen.png"));
-//            ico_white_queen = new ImageIcon(img_white_queen);
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//        board[2][0].button.setIcon(ico_white_queen);
-//        board[2][0].figures = new King("White");
-//        System.out.println(ico_white_queen);
+
     }
 
 
