@@ -6,9 +6,6 @@ public class King extends Figures{
     }
 
     public void secondStepOfMove(int i, int j){
-        System.out.println(Checkers.isWasBeaten());
-        System.out.println(ico_white_queen);
-        System.out.println(ico_white);
 
         if(!Checkers.isWasBeaten() && justKingMove(i,j)) {
             move(i,j);
@@ -20,8 +17,8 @@ public class King extends Figures{
 
         longBeat(i,j);
 
-        if( Checkers.isPlayerWhiteTurn()) Checkers.setPlayerWhiteTurn(false);
-        else Checkers.setPlayerWhiteTurn(true);
+//        if( Checkers.isPlayerWhiteTurn() && !Checkers.isWasBeaten() ) Checkers.setPlayerWhiteTurn(false);
+//        else if(!Checkers.isPlayerWhiteTurn() && !Checkers.isWasBeaten() ) Checkers.setPlayerWhiteTurn(true);
 
     }
     private boolean justKingMove(int i, int j){
@@ -35,30 +32,30 @@ public class King extends Figures{
             if ((i > Checkers.getOldI()) && (j > Checkers.getOldJ())) {
                 for (int k = 1; k < (i - Checkers.getOldI()); k++) {
 
-                    if ((Board.board[Checkers.getOldI() + k][Checkers.getOldJ() + k].figures != null)) return true; //sprawdzamy czy pola sa puste
+                    if ((Board.board[Checkers.getOldI() + k][Checkers.getOldJ() + k].figures != null)) return false; //sprawdzamy czy pola sa puste
                 }
-                return false;
+                return true;
             }
             if ((i > Checkers.getOldI()) && (j < Checkers.getOldJ())) {
 
                 for (int k = 1; k < (i - Checkers.getOldI()); k++) {
-                    if ((Board.board[Checkers.getOldI() + k][Checkers.getOldJ() - k].figures != null)) return true; //sprawdzamy czy pola sa puste
+                    if ((Board.board[Checkers.getOldI() + k][Checkers.getOldJ() - k].figures != null)) return false; //sprawdzamy czy pola sa puste
                 }
-                return false;
+                return true;
             }
             if ((i < Checkers.getOldI()) && (j > Checkers.getOldJ())) {
 
                 for (int k = 1; k < (j - Checkers.getOldJ()); k++) {
-                    if ((Board.board[Checkers.getOldI() - k][Checkers.getOldJ() + k].figures == null)) return true; //sprawdzamy czy pola sa puste
+                    if ((Board.board[Checkers.getOldI() - k][Checkers.getOldJ() + k].figures != null)) return false; //sprawdzamy czy pola sa puste
                 }
-                return false;
+                return true;
             }
             if ((i < Checkers.getOldI()) && (j < Checkers.getOldJ())) {
 
                 for (int k = 1; k < (Checkers.getOldI() - i); k++) {
-                    if ((Board.board[Checkers.getOldI() - k][Checkers.getOldJ() - k].figures == null)) return true; //sprawdzamy czy pola sa puste
+                    if ((Board.board[Checkers.getOldI() - k][Checkers.getOldJ() - k].figures != null)) return false; //sprawdzamy czy pola sa puste
                 }
-                return false;
+                return true;
             }
 
 

@@ -47,29 +47,46 @@ public class Checkers implements MouseListener{
 
     }
     public  void check(int i, int j){
+        System.out.println("-----------");
+
+
+        System.out.println("isplayer one : " + isPlayerWhiteTurn());
+
+        System.out.println("fulturn: " + fullTurn);
+        System.out.println("oldi: " + oldI);
+        System.out.println("oldj: " + oldJ);
+        System.out.println("was beaten: " + wasBeaten);
+        System.out.println(Board.board[i][j].figures);
+        System.out.println(Board.board[i][j].figures==null);
 
         if(fullTurn) {
             if(Board.board[i][j].figures==null)return;
+            System.out.println("i'm in 1");
             if(!isWasBeaten()){
+                System.out.println("i'm in 2");
                 oldI = i;
                 oldJ = j;
                 Board.board[i][j].figures.firstStepOfMove(i, j);
 
             }
             if(isWasBeaten() && (i==oldI && j==oldJ)) {
+                System.out.println("i'm in 3");
                 Board.board[i][j].figures.firstStepOfMove(i, j);
             }
             return;
         }
         if(i==oldI && j == oldJ) {
+            System.out.println("i'm in 4");
             fullTurn = true;
             Board.board[oldI][oldJ].button.setBackground(new Color(255, 229, 180));
         }
         if(!fullTurn) {
+            System.out.println("i'm in 5");
             if(Board.board[i][j].figures!=null) return;
 
             Board.board[oldI][oldJ].figures.secondStepOfMove(i, j);
             if(Board.board[i][j].figures!=null) {
+                System.out.println("i'm in 6");
                 Board.board[i][j].figures.makingKing(i, j);
             }
         }

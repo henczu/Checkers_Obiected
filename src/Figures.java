@@ -40,18 +40,23 @@ public abstract class Figures extends Board{
                 writingCurrentPoints();
                 Checkers.fullTurn=true;
 
-                if(!Checkers.isWasBeaten()) return;
+               if(Checkers.isWasBeaten()) {
+                       Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].figures=null; // czyszcze referencje zbitego pionka
+                       Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].button.setIcon(null);
+               }
 
-                Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].figures=null; // czyszcze referencje zbitego pionka
-                Board.board[Checkers.getBeatenI()][Checkers.getBeatenJ()].button.setIcon(null);
-                if (possibleBeat(i,j)) {
+
+                if (possibleBeat(i,j)&& Checkers.isWasBeaten()) {
+
+                        System.out.println("oldi " + Checkers.getOldI() + "  oldJ  " + Checkers.getOldJ());
                         Checkers.setOldI(i);
                         Checkers.setOldJ(j);
+                        System.out.println("oldi " + Checkers.getOldI() + "  oldJ  " + Checkers.getOldJ());
                         if (Checkers.isPlayerWhiteTurn()) {
                                 Checkers.setPlayerWhiteTurn(true);
 
 
-                        } else if (!Checkers.isPlayerWhiteTurn()) {
+                        } else  {
                                 Checkers.setPlayerWhiteTurn(false);
                         }
                 }
@@ -60,7 +65,7 @@ public abstract class Figures extends Board{
                                 Checkers.setPlayerWhiteTurn(false);
 
                         }
-                        else if (!Checkers.isPlayerWhiteTurn()) {
+                        else  {
                                 Checkers.setPlayerWhiteTurn(true);
                         }
                         Checkers.setWasBeaten(false);
@@ -92,6 +97,7 @@ public abstract class Figures extends Board{
                 }
         }
         private boolean possibleBeat( int newX, int newY) {
+                System.out.println("no jest mozliwe bicie");
                 if (Checkers.isPlayerWhiteTurn() && (
                                 possibleBeat(newX, newY, -1, -1, "Black") ||
                                 possibleBeat(newX, newY, +1, +1, "Black") ||
@@ -121,7 +127,7 @@ public abstract class Figures extends Board{
                 catch (ArrayIndexOutOfBoundsException e){
                         tmp=false;
                 }
-
+                System.out.println(tmp);
                 return  tmp;
         }
 void makingKing( int i, int j){}
